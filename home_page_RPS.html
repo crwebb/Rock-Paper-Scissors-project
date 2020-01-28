@@ -5,50 +5,55 @@
 </head>
 <body>
     <script>
+
     
+
        function computerPlay () {
 
-        let possibleChoices = ['Rock', 'Paper', 'Scissors'];   
+        let possibleChoices = ['rock', 'paper', 'scissors']; 
         let computerSelection = possibleChoices[Math.floor(Math.random() * possibleChoices.length)];
             return computerSelection; 
        }
 
        function playerPlay () { 
 
-        let playerChoices = prompt("Rock, Paper, Scissors? (You will be asked 5 times)");
+        let playerChoices = prompt("Rock, Paper, Scissors?");
+        let playerChoicesLower = playerChoices;
         let playerSelection = playerChoices; 
-            return playerSelection;
+            return playerSelection.toLowerCase();
        }
        
         function playRound () {
 
             let computerSelect = computerPlay();
-                console.log(computerSelect, "Computers Choice");
+                console.log(computerSelect.toLowerCase(), "Computers Choice");
             let playerSelect = playerPlay();
-                console.log(playerSelect, "Players Choice");
+                console.log(playerSelect.toLowerCase(), "Players Choice");
             let standard = " "; 
 
             if (computerSelect === playerSelect) {
                 standard = "The round is a Draw !";
-            } else if (computerSelect === "Rock" && playerSelect === "Paper") {
+            } else if (computerSelect === "rock" && playerSelect === "paper") {
                 standard = "The Player Wins !";
-            } else if (computerSelect === "Paper" && playerSelect === "Rock") {
+            } else if (computerSelect === "paper" && playerSelect === "rock") {
                 standard = "The Computer Wins !";
-            } else if (computerSelect === "Scissors" && playerSelect === "Rock") {
+            } else if (computerSelect === "scissors" && playerSelect === "rock") {
                 standard = "The Player Wins !";
-            } else if (computerSelect === "Rock" && playerSelect === "Scissors") {
+            } else if (computerSelect === "rock" && playerSelect === "scissors") {
                 standard = "The Computer Wins !";
-            } else if (computerSelect === "Paper" && playerSelect === "Scissors") {
+            } else if (computerSelect === "paper" && playerSelect === "scissors") {
                 standard = "The Player Wins !";
-            } else if (computerSelect === "Scissors" && playerSelect === "Paper") {
+            } else if (computerSelect === "scissors" && playerSelect === "paper") {
                 standard = "The Computer Wins !";
             } else {
                 standard = "Something isn't working quite right!";
             }
             console.log("----", standard, "----");
-            return standard;
+            return standard.toLowerCase();
        }
 
+       let playerScore = 0;
+       let computerScore = 0;
        function game() {
            for (let i = 0; i <5; i++) {
                 playRound();
