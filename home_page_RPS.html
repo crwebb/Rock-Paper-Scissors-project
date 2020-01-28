@@ -5,18 +5,51 @@
 </head>
 <body>
     <script>
-       function computerPlay() {
-        let possibleChoices = ['Rock', 'Paper', 'Scissors'];
-        let randomChoice = possibleChoices[Math.floor(Math.random() * possibleChoices.length)];
-        return randomChoice;
+
+        //  A Function named 'computerPlay' that randomly generates Rock, Paper or Scissors.
+       function computerPlay() {    //  Function declaration
+            let possibleChoices = ['Rock', 'Paper', 'Scissors'];    //  Creates a variable "possibleChoices with Rock, paper, scissors stored inside it"
+            let computerSelection = possibleChoices[Math.floor(Math.random() * possibleChoices.length)]; //  Takes the above array and 
+            return computerSelection; // Returns
        }
-       console.log(computerPlay());
+       console.log(computerPlay()); //  Prints the function computerPlay(); to the console, a new value is printed each refresh
 
+       function playerPlay() {
+           let playerChoices = prompt("Rock, Paper, Scissors?");
+           let playerSelection = playerChoices
+           return playerSelection;
+       }
+        console.log(playerPlay());
 
+        let computerSelection = computerPlay()
+        let playerSelection = playerPlay()
 
+        // a Function named 'playRound' which plays one round of Rock, Paper, Scissors 
+        function playRound(playerSelection, computerSelection) {
+            
+            let standard; // Does this need a value ?
 
+            // This section may need code so user input isnt case sensitive
+            if (computerSelection === playerSelection) {
+                standard = "The round is a Draw !";
+            } else if (computerSelection === "Rock" && playerSelection === "Paper") {
+                standard = "The Player Wins !";
+            } else if (computerSelection === "Paper" && playerSelection === "Rock") {
+                standard = "The Computer Wins !";
+            } else if (computerSelection === "Scissors" && playerSelection === "Rock") {
+                standard = "The Player Wins !";
+            } else if (computerSelection === "Rock" && playerSelection === "Scissors") {
+                standard = "The Computer Wins !";
+            } else if (computerSelection === "Paper" && playerSelection === "Scissors") {
+                standard = "The Player Wins !";
+            } else if (computerSelection === "Scissors" && playerSelection === "Paper") {
+                standard = "The Computer Wins !";
+            } else {
+                standard = "Something isn't working quite right!";
+            }
+            return standard;
+       }
+       console.log(playRound(playerSelection, computerSelection));
     </script>
-
 </body>
-
 </html>
