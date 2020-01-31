@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Rock, Paper, Scissors. Site</title>
+    <title> crwebb Rock, Paper, Scissors. Game Site</title>
 </head>
 <body>
     <script>
 
-    
+        // Global Variables
+        let playerScore = 0;
+        let computerScore = 0;
+        let roundCounter = 0;
 
        function computerPlay () {
 
@@ -26,40 +29,48 @@
         function playRound () {
 
             let computerSelect = computerPlay();
-                console.log(computerSelect.toLowerCase(), "Computers Choice");
+                console.log(computerSelect, "Computers Choice");
             let playerSelect = playerPlay();
-                console.log(playerSelect.toLowerCase(), "Players Choice");
-            let standard = " "; 
+                console.log(playerSelect, "Players Choice");
+            let standard = ""; 
 
             if (computerSelect === playerSelect) {
-                standard = "The round is a Draw !";
+                standard = "The round is a Draw !", roundCounter++;
             } else if (computerSelect === "rock" && playerSelect === "paper") {
-                standard = "The Player Wins !";
+                standard = "The Player Wins The Round !", playerScore++, roundCounter++;
             } else if (computerSelect === "paper" && playerSelect === "rock") {
-                standard = "The Computer Wins !";
+                standard = "The Computer Wins The Round !", computerScore++, roundCounter++;
             } else if (computerSelect === "scissors" && playerSelect === "rock") {
-                standard = "The Player Wins !";
+                standard = "The Player Wins The Round !", playerScore++, roundCounter++;
             } else if (computerSelect === "rock" && playerSelect === "scissors") {
-                standard = "The Computer Wins !";
+                standard = "The Computer Wins The Round !", computerScore++, roundCounter++;
             } else if (computerSelect === "paper" && playerSelect === "scissors") {
-                standard = "The Player Wins !";
+                standard = "The Player Wins The Round !", playerScore++, roundCounter++;
             } else if (computerSelect === "scissors" && playerSelect === "paper") {
-                standard = "The Computer Wins !";
+                standard = "The Computer Wins The Round !", computerScore++, roundCounter++;
             } else {
                 standard = "Something isn't working quite right!";
             }
             console.log("----", standard, "----");
-            return standard.toLowerCase();
+            return standard;
+          
        }
 
-       let playerScore = 0;
-       let computerScore = 0;
        function game() {
-           for (let i = 0; i <5; i++) {
+           
+           for (let i = 0; i <100; i++) {
+               if  (playerScore === 5) {
+               console.log("==== Player Has Won The Game! ====".toUpperCase());
+            } else if (computerScore === 5) { 
+                console.log("==== Computer Has Won The Game ! ====".toUpperCase());
+            }else
                 playRound();
             }
+
+            console.log("==== Rounds taken:".toUpperCase(), roundCounter, " ====" );
         }
-            console.log(game());
+            console.log(game()); //Runs the entire game
+
     </script>
 </body>
-</html>
+</html> 
